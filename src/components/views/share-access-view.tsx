@@ -6,8 +6,9 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { School, Lock, AlertCircle, Loader2, ArrowLeft, Printer, Download } from 'lucide-react'
+import { Lock, AlertCircle, Loader2, ArrowLeft, Printer, Download } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
+import { SchoolLogo } from '@/components/school-logo'
 import { DocumentMarkdown } from '@/components/document-markdown'
 import { SchoolHeader } from '@/components/school-header'
 import { formatTarikh } from '@/lib/api'
@@ -141,8 +142,8 @@ export function ShareAccessView({ token }: { token: string }) {
         <Card className="max-w-md w-full shadow-xl">
           <CardHeader className="space-y-3">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                <School className="h-5 w-5" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-border overflow-hidden">
+                <SchoolLogo size={40} priority />
               </div>
               <div>
                 <div className="text-sm font-bold">Sekolah Rendah Al Furqan</div>

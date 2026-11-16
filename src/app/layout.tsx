@@ -15,6 +15,10 @@ export const metadata: Metadata = {
     "Portal Akses Dokumen Murid untuk Ibu Bapa/Penjaga - Sekolah Rendah Al Furqan Shah Alam",
   keywords: ["SPMF", "Al Furqan", "Sekolah", "Murid", "Dokumen", "Shah Alam"],
   authors: [{ name: "Sekolah Rendah Al Furqan Shah Alam" }],
+  icons: {
+    icon: "/logo-sekolah.png",
+    apple: "/logo-sekolah.png",
+  },
 };
 
 export default function RootLayout({

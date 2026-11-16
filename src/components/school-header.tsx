@@ -1,14 +1,12 @@
 'use client'
 
-import { School } from 'lucide-react'
+import { SchoolLogo } from '@/components/school-logo'
 
 export function SchoolHeader({ compact = false }: { compact?: boolean }) {
   return (
     <div className="flex items-center justify-between border-b-2 border-emerald-700 pb-2 mb-3">
       <div className="flex items-center gap-3">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-700 text-white">
-          <School className="h-6 w-6" />
-        </div>
+        <SchoolLogo size={compact ? 44 : 56} priority />
         <div>
           <div className={`font-bold text-emerald-800 ${compact ? 'text-sm' : 'text-base'}`}>
             SEKOLAH RENDAH AL FURQAN

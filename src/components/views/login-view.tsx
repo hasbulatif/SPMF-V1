@@ -9,7 +9,8 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { School, Mail, Lock, Loader2, AlertCircle, Info, BookOpen } from 'lucide-react'
+import { Mail, Lock, Loader2, AlertCircle, Info, BookOpen } from 'lucide-react'
+import { SchoolLogo } from '@/components/school-logo'
 import { useToast } from '@/hooks/use-toast'
 
 export function LoginView() {
@@ -74,8 +75,8 @@ export function LoginView() {
         <div className="grid w-full max-w-5xl gap-8 lg:grid-cols-2 lg:items-center">
           <div className="hidden lg:flex flex-col gap-6 pr-8">
             <div className="flex items-center gap-3">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30">
-                <School className="h-7 w-7" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-lg shadow-primary/20 ring-1 ring-border overflow-hidden">
+                <SchoolLogo size={56} priority />
               </div>
               <div>
                 <div className="text-xl font-bold text-foreground">
@@ -108,8 +109,8 @@ export function LoginView() {
           <Card className="w-full max-w-md mx-auto shadow-xl border-border/60">
             <CardHeader className="space-y-3">
               <div className="flex items-center gap-3 lg:hidden">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                  <School className="h-5 w-5" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-border overflow-hidden">
+                  <SchoolLogo size={40} priority />
                 </div>
                 <div>
                   <div className="text-sm font-bold">SPMF</div>

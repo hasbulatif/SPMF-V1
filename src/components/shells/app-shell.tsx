@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import {
-  School,
   LayoutDashboard,
   FileText,
   Share2,
@@ -17,11 +16,16 @@ import {
   X,
   Sun,
   Moon,
+  Users,
+  GraduationCap,
+  Building2,
+  ScrollText,
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'
 import { useToast } from '@/hooks/use-toast'
 import { getInisial, STAFF_ROLE_LABEL } from '@/lib/api'
+import { SchoolLogo } from '@/components/school-logo'
 
 interface NavItem {
   label: string
@@ -41,10 +45,10 @@ const staffNav: NavItem[] = [
   { label: 'Papan Pemuka', icon: <LayoutDashboard className="h-4 w-4" />, view: { name: 'staff-dashboard' }, match: ['staff-dashboard'] },
   { label: 'Dokumen', icon: <FileText className="h-4 w-4" />, view: { name: 'staff-documents' }, match: ['staff-documents', 'staff-document-preview', 'staff-document-edit'] },
   { label: 'Cipta Dokumen', icon: <FileText className="h-4 w-4" />, view: { name: 'staff-document-create' }, match: ['staff-document-create'] },
-  { label: 'Murid', icon: <School className="h-4 w-4" />, view: { name: 'staff-students' }, match: ['staff-students'] },
-  { label: 'Ibu Bapa', icon: <School className="h-4 w-4" />, view: { name: 'staff-guardians' }, match: ['staff-guardians'] },
-  { label: 'Kelas', icon: <School className="h-4 w-4" />, view: { name: 'staff-classes' }, match: ['staff-classes'] },
-  { label: 'Log Audit', icon: <Bell className="h-4 w-4" />, view: { name: 'staff-audit-logs' }, match: ['staff-audit-logs'] },
+  { label: 'Murid', icon: <GraduationCap className="h-4 w-4" />, view: { name: 'staff-students' }, match: ['staff-students'] },
+  { label: 'Ibu Bapa', icon: <Users className="h-4 w-4" />, view: { name: 'staff-guardians' }, match: ['staff-guardians'] },
+  { label: 'Kelas', icon: <Building2 className="h-4 w-4" />, view: { name: 'staff-classes' }, match: ['staff-classes'] },
+  { label: 'Log Audit', icon: <ScrollText className="h-4 w-4" />, view: { name: 'staff-audit-logs' }, match: ['staff-audit-logs'] },
 ]
 
 interface ShellProps {
@@ -96,8 +100,8 @@ export function AppShell({ children, notificationsBadge = 0 }: ShellProps) {
           onClick={() => setView(user?.type === 'GUARDIAN' ? { name: 'parent-dashboard' } : { name: 'staff-dashboard' })}
           className="flex items-center gap-2"
         >
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <School className="h-5 w-5" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-border overflow-hidden">
+            <SchoolLogo size={34} priority />
           </div>
           <div className="hidden sm:block text-left">
             <div className="text-sm font-bold leading-tight">SPMF</div>

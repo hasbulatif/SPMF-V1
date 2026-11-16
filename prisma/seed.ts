@@ -277,7 +277,7 @@ Sekian, terima kasih.
 Sekolah Rendah Al Furqan Shah Alam
 `.trim()
 
-  const suratEdaran = (tajuk: string, kelas: typeof kelas[number]) => `
+  const suratEdaran = (tajuk: string, kelasTarget: { nama: string }) => `
 # SURAT EDARAN SEKOLAH
 
 **SEKOLAH RENDAH AL FURQAN SHAH ALAM**
@@ -285,7 +285,7 @@ Tahun Sekolah ${tahunSekolah}
 
 ## ${tajuk}
 
-Kepada ibu bapa / penjaga murid **${kelas.nama}**, dimaklumkan perkara berikut:
+Kepada ibu bapa / penjaga murid **${kelasTarget.nama}**, dimaklumkan perkara berikut:
 
 1. Tarikh: seperti tertera.
 2. Tempat: Sekolah Rendah Al Furqan Shah Alam.

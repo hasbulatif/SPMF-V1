@@ -23,6 +23,7 @@ model Staff {
 
   kelasGuru       Kelas[]   @relation("KelasGuru")
   dokumenDiterbit Dokumen[] @relation("DokumenPenerbit")
+  bahanKongsi     SharedResource[]
   auditLogs       AuditLog[]
 }
 
@@ -62,6 +63,7 @@ model Student {
   kelas     Kelas            @relation(fields: [kelasId], references: [id])
   guardians GuardianStudent[]
   dokumen   Dokumen[]
+  bahanKongsi SharedResource[]
 }
 
 // Pautan many-to-many antara Guardian dan Student
@@ -157,6 +159,29 @@ model Notifikasi {
   createdAt  DateTime @default(now())
 
   guardian Guardian @relation(fields: [guardianId], references: [id], onDelete: Cascade)
+}
+
+// ===== Bahan Kongsi Guru (PDF / Google Drive) =====
+// Guru kelas boleh berkongsi bahan luaran terus kepada ibu bapa
+// tanpa perlu key in laporan dalam SPMF
+model SharedResource {
+  id          String   @id @default(cuid())
+  staffId     String?  // guru yang berkongsi (null jika staf dipadam)
+  tajuk       String   // tajuk bahan
+  keterangan  String?  // nota ringkas
+  jenis       String   // PDF_UPLOAD | GOOGLE_DRIVE
+  failUrl     String?  // untuk PDF: /uploads/xxx.pdf
+  failName    String?  // nama fail asal
+  googleUrl   String?  // untuk Google Drive: URL penuh
+  googlePreviewUrl String? // URL embed /preview untuk iframe
+  // Sasaran: murid tertentu (studentId) ATAU kelas keseluruhan (kelasId)
+  studentId   String?  // null jika untuk seluruh kelas
+  kelasId     String?  // kelas terlibat
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  staff    Staff?    @relation(fields: [staffId], references: [id], onDelete: SetNull)
+  student  Student?  @relation(fields: [studentId], references: [id], onDelete: Cascade)
 }
 
 // ===== Log Audit =====

@@ -20,6 +20,8 @@ import {
   GraduationCap,
   Building2,
   ScrollText,
+  BookOpen,
+  Upload,
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'
@@ -37,6 +39,7 @@ interface NavItem {
 const parentNav: NavItem[] = [
   { label: 'Papan Pemuka', icon: <LayoutDashboard className="h-4 w-4" />, view: { name: 'parent-dashboard' }, match: ['parent-dashboard'] },
   { label: 'Dokumen', icon: <FileText className="h-4 w-4" />, view: { name: 'parent-documents' }, match: ['parent-documents', 'parent-document-preview'] },
+  { label: 'Bahan Guru', icon: <BookOpen className="h-4 w-4" />, view: { name: 'parent-bahan-guru' }, match: ['parent-bahan-guru', 'parent-bahan-view'] },
   { label: 'Pautan Kongsi', icon: <Share2 className="h-4 w-4" />, view: { name: 'parent-share-links' }, match: ['parent-share-links'] },
   { label: 'Notifikasi', icon: <Bell className="h-4 w-4" />, view: { name: 'parent-notifications' }, match: ['parent-notifications'] },
 ]
@@ -45,6 +48,7 @@ const staffNav: NavItem[] = [
   { label: 'Papan Pemuka', icon: <LayoutDashboard className="h-4 w-4" />, view: { name: 'staff-dashboard' }, match: ['staff-dashboard'] },
   { label: 'Dokumen', icon: <FileText className="h-4 w-4" />, view: { name: 'staff-documents' }, match: ['staff-documents', 'staff-document-preview', 'staff-document-edit'] },
   { label: 'Cipta Dokumen', icon: <FileText className="h-4 w-4" />, view: { name: 'staff-document-create' }, match: ['staff-document-create'] },
+  { label: 'Kongsi Bahan', icon: <Upload className="h-4 w-4" />, view: { name: 'staff-share-resources' }, match: ['staff-share-resources'] },
   { label: 'Murid', icon: <GraduationCap className="h-4 w-4" />, view: { name: 'staff-students' }, match: ['staff-students'] },
   { label: 'Ibu Bapa', icon: <Users className="h-4 w-4" />, view: { name: 'staff-guardians' }, match: ['staff-guardians'] },
   { label: 'Kelas', icon: <Building2 className="h-4 w-4" />, view: { name: 'staff-classes' }, match: ['staff-classes'] },

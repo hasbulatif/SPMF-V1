@@ -11,6 +11,7 @@ import { StaffStudents } from '@/components/views/staff-students'
 import { StaffGuardians } from '@/components/views/staff-guardians'
 import { StaffClasses } from '@/components/views/staff-classes'
 import { StaffAuditLogs } from '@/components/views/staff-audit-logs'
+import { StaffShareResources } from '@/components/views/staff-share-resources'
 
 export function StaffShell() {
   const { view } = useView()
@@ -20,6 +21,7 @@ export function StaffShell() {
       {view.name === 'staff-dashboard' && <StaffDashboard />}
       {view.name === 'staff-documents' && <StaffDocuments />}
       {view.name === 'staff-document-create' && <StaffDocumentCreate />}
+      {view.name === 'staff-share-resources' && <StaffShareResources />}
       {view.name === 'staff-document-edit' && (
         <StaffDocumentEdit documentId={view.documentId} />
       )}

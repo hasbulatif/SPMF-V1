@@ -40,11 +40,14 @@ export type AppView =
   | { name: 'parent-document-preview'; documentId: string }
   | { name: 'parent-share-links' }
   | { name: 'parent-notifications' }
+  | { name: 'parent-bahan-guru'; studentId?: string }
+  | { name: 'parent-bahan-view'; resourceId: string }
   | { name: 'staff-dashboard' }
   | { name: 'staff-documents' }
   | { name: 'staff-document-preview'; documentId: string }
   | { name: 'staff-document-edit'; documentId: string }
   | { name: 'staff-document-create' }
+  | { name: 'staff-share-resources' }
   | { name: 'staff-students' }
   | { name: 'staff-guardians' }
   | { name: 'staff-classes' }

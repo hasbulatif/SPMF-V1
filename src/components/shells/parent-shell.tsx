@@ -9,6 +9,8 @@ import { ParentDocumentsList } from '@/components/views/parent-documents-list'
 import { ParentDocumentPreview } from '@/components/views/parent-document-preview'
 import { ParentShareLinks } from '@/components/views/parent-share-links'
 import { ParentNotifications } from '@/components/views/parent-notifications'
+import { ParentBahanGuru } from '@/components/views/parent-bahan-guru'
+import { ParentBahanView } from '@/components/views/parent-bahan-view'
 
 interface NotifSummary {
   ok: boolean
@@ -46,6 +48,12 @@ export function ParentShell() {
       )}
       {view.name === 'parent-share-links' && <ParentShareLinks />}
       {view.name === 'parent-notifications' && <ParentNotifications />}
+      {view.name === 'parent-bahan-guru' && (
+        <ParentBahanGuru initialStudentId={view.studentId} />
+      )}
+      {view.name === 'parent-bahan-view' && (
+        <ParentBahanView resourceId={view.resourceId} />
+      )}
     </AppShell>
   )
 }

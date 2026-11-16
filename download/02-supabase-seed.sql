@@ -18,10 +18,10 @@ DELETE FROM "Staff";
 DELETE FROM "_KelasGuru";
 
 -- ===== STAF =====
-INSERT INTO "Staff" ("id","nama","emel","password","peranan","noPekerja","createdAt","updatedAt") VALUES ('s_staff_01','Ustaz Ahmad Faizal bin Hassan','ahmad.fazil@alfurqan.edu.my','guru123','GURU','AF-S-001',NOW(),NOW());
-INSERT INTO "Staff" ("id","nama","emel","password","peranan","noPekerja","createdAt","updatedAt") VALUES ('s_staff_02','Puan Noraini binti Yusof','noraini.yusof@alfurqan.edu.my','pk123','PENOLONG_KANAN','AF-S-002',NOW(),NOW());
-INSERT INTO "Staff" ("id","nama","emel","password","peranan","noPekerja","createdAt","updatedAt") VALUES ('s_staff_03','Puan Siti Khadijah binti Ismail','siti.ismail@alfurqan.edu.my','kerani123','KERANI','AF-S-003',NOW(),NOW());
-INSERT INTO "Staff" ("id","nama","emel","password","peranan","noPekerja","createdAt","updatedAt") VALUES ('s_staff_04','Encik Zulkifli bin Rahman','admin@alfurqan.edu.my','admin123','ADMIN','AF-S-004',NOW(),NOW());
+INSERT INTO "Staff" ("id","nama","emel","password","peranan","noPekerja","createdAt","updatedAt") VALUES ('s_staff_01','Ustaz Ahmad Faizal bin Hassan','ahmad.fazil@alfurqan.edu.my','GuruFurqan@2026','GURU','AF-S-001',NOW(),NOW());
+INSERT INTO "Staff" ("id","nama","emel","password","peranan","noPekerja","createdAt","updatedAt") VALUES ('s_staff_02','Puan Noraini binti Yusof','noraini.yusof@alfurqan.edu.my','PKFurqan@2026','PENOLONG_KANAN','AF-S-002',NOW(),NOW());
+INSERT INTO "Staff" ("id","nama","emel","password","peranan","noPekerja","createdAt","updatedAt") VALUES ('s_staff_03','Puan Siti Khadijah binti Ismail','siti.ismail@alfurqan.edu.my','KeraniFurqan@2026','KERANI','AF-S-003',NOW(),NOW());
+INSERT INTO "Staff" ("id","nama","emel","password","peranan","noPekerja","createdAt","updatedAt") VALUES ('s_staff_04','Encik Zulkifli bin Rahman','admin@alfurqan.edu.my','AdminFurqan@2026','ADMIN','AF-S-004',NOW(),NOW());
 
 -- ===== KELAS =====
 INSERT INTO "Kelas" ("id","nama","tahun","guruKelasId") VALUES ('c_kelas_01','1 Al Bukhari',1,'s_staff_01');
@@ -32,12 +32,12 @@ INSERT INTO "Kelas" ("id","nama","tahun","guruKelasId") VALUES ('c_kelas_05','5 
 INSERT INTO "Kelas" ("id","nama","tahun","guruKelasId") VALUES ('c_kelas_06','6 Ibnu Rushd',6,'s_staff_02');
 
 -- ===== IBU BAPA =====
-INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_01','Aisyah binti Hamid','aisyah.hamid@gmail.com','0123456789','ibu123','IBU','AKTIF',NOW(),NOW());
-INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_02','Razif bin Othman','razif.othman@gmail.com','0129876543','bapa123','BAPA','AKTIF',NOW(),NOW());
-INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_03','Fatimah binti Abdullah','fatimah.abdullah@gmail.com','0135678901','ibu123','IBU','AKTIF',NOW(),NOW());
-INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_04','Hasni bin Mohamed','hasni.mohamed@gmail.com','0144567890','bapa123','BAPA','AKTIF',NOW(),NOW());
-INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_05','Norhayati binti Salleh','norhayati.salleh@gmail.com','0156789012','ibu123','IBU','AKTIF',NOW(),NOW());
-INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_06','Kamal bin Ismail','kamal.ismail@gmail.com','0167890123','bapa123','BAPA','AKTIF',NOW(),NOW());
+INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_01','Aisyah binti Hamid','aisyah.hamid@gmail.com','0123456789','IbuBapa@Furqan2026','IBU','AKTIF',NOW(),NOW());
+INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_02','Razif bin Othman','razif.othman@gmail.com','0129876543','IbuBapa@Furqan2026','BAPA','AKTIF',NOW(),NOW());
+INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_03','Fatimah binti Abdullah','fatimah.abdullah@gmail.com','0135678901','IbuBapa@Furqan2026','IBU','AKTIF',NOW(),NOW());
+INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_04','Hasni bin Mohamed','hasni.mohamed@gmail.com','0144567890','IbuBapa@Furqan2026','BAPA','AKTIF',NOW(),NOW());
+INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_05','Norhayati binti Salleh','norhayati.salleh@gmail.com','0156789012','IbuBapa@Furqan2026','IBU','AKTIF',NOW(),NOW());
+INSERT INTO "Guardian" ("id","nama","emel","noTelefon","password","hubungan","status","createdAt","updatedAt") VALUES ('g_guard_06','Kamal bin Ismail','kamal.ismail@gmail.com','0167890123','IbuBapa@Furqan2026','BAPA','AKTIF',NOW(),NOW());
 
 -- ===== MURID =====
 INSERT INTO "Student" ("id","idMurid","nama","tahun","kelasId","jantina","status","noKP","createdAt","updatedAt") VALUES ('st_mur_01','AF2026001','Ahmad Danish bin Razif',1,'c_kelas_01','L','AKTIF','200109-14-0123',NOW(),NOW());
@@ -161,8 +161,8 @@ INSERT INTO "AuditLog" ("id","staffId","userType","namaUser","tindakan","metadat
 -- ===== SEED SELESAI =====
 -- Total: 4 staf, 6 kelas, 6 ibu bapa, 10 murid, 54 dokumen, 4 bahan kongsi
 -- Akaun demo:
---   Ibu Bapa: aisyah.hamid@gmail.com / ibu123
---   Guru: ahmad.fazil@alfurqan.edu.my / guru123
---   Penolong Kanan: noraini.yusof@alfurqan.edu.my / pk123
---   Kerani: siti.ismail@alfurqan.edu.my / kerani123
---   Admin: admin@alfurqan.edu.my / admin123
+--   Ibu Bapa: aisyah.hamid@gmail.com / IbuBapa@Furqan2026
+--   Guru: ahmad.fazil@alfurqan.edu.my / GuruFurqan@2026
+--   Penolong Kanan: noraini.yusof@alfurqan.edu.my / PKFurqan@2026
+--   Kerani: siti.ismail@alfurqan.edu.my / KeraniFurqan@2026
+--   Admin: admin@alfurqan.edu.my / AdminFurqan@2026

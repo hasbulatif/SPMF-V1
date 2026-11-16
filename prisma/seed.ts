@@ -19,7 +19,7 @@ async function main() {
     data: {
       nama: 'Ustaz Ahmad Faizal bin Hassan',
       emel: 'ahmad.fazil@alfurqan.edu.my',
-      password: 'guru123',
+      password: 'GuruFurqan@2026',
       peranan: 'GURU',
       noPekerja: 'AF-S-001',
     },
@@ -29,7 +29,7 @@ async function main() {
     data: {
       nama: 'Puan Noraini binti Yusof',
       emel: 'noraini.yusof@alfurqan.edu.my',
-      password: 'pk123',
+      password: 'PKFurqan@2026',
       peranan: 'PENOLONG_KANAN',
       noPekerja: 'AF-S-002',
     },
@@ -39,7 +39,7 @@ async function main() {
     data: {
       nama: 'Puan Siti Khadijah binti Ismail',
       emel: 'siti.ismail@alfurqan.edu.my',
-      password: 'kerani123',
+      password: 'KeraniFurqan@2026',
       peranan: 'KERANI',
       noPekerja: 'AF-S-003',
     },
@@ -49,7 +49,7 @@ async function main() {
     data: {
       nama: 'Encik Zulkifli bin Rahman',
       emel: 'admin@alfurqan.edu.my',
-      password: 'admin123',
+      password: 'AdminFurqan@2026',
       peranan: 'ADMIN',
       noPekerja: 'AF-S-004',
     },
@@ -77,42 +77,42 @@ async function main() {
       nama: 'Aisyah binti Hamid',
       emel: 'aisyah.hamid@gmail.com',
       noTelefon: '0123456789',
-      password: 'ibu123',
+      password: 'IbuBapa@Furqan2026',
       hubungan: 'IBU',
     },
     {
       nama: 'Razif bin Othman',
       emel: 'razif.othman@gmail.com',
       noTelefon: '0129876543',
-      password: 'bapa123',
+      password: 'IbuBapa@Furqan2026',
       hubungan: 'BAPA',
     },
     {
       nama: 'Fatimah binti Abdullah',
       emel: 'fatimah.abdullah@gmail.com',
       noTelefon: '0135678901',
-      password: 'ibu123',
+      password: 'IbuBapa@Furqan2026',
       hubungan: 'IBU',
     },
     {
       nama: 'Hasni bin Mohamed',
       emel: 'hasni.mohamed@gmail.com',
       noTelefon: '0144567890',
-      password: 'bapa123',
+      password: 'IbuBapa@Furqan2026',
       hubungan: 'BAPA',
     },
     {
       nama: 'Norhayati binti Salleh',
       emel: 'norhayati.salleh@gmail.com',
       noTelefon: '0156789012',
-      password: 'ibu123',
+      password: 'IbuBapa@Furqan2026',
       hubungan: 'IBU',
     },
     {
       nama: 'Kamal bin Ismail',
       emel: 'kamal.ismail@gmail.com',
       noTelefon: '0167890123',
-      password: 'bapa123',
+      password: 'IbuBapa@Furqan2026',
       hubungan: 'BAPA',
     },
   ]
@@ -532,12 +532,12 @@ Saya mengaku bahawa maklumat di atas adalah benar dan saya bersetuju mematuhi se
   console.log(`- Murid: ${students.length}`)
   console.log(`- Dokumen: ${createdDocs.length + 1}`)
   console.log(`\nAkaun log masuk dummy:`)
-  console.log(`  Ibu Bapa (2 anak): aisyah.hamid@gmail.com / ibu123`)
-  console.log(`  Ibu Bapa (2 anak): fatimah.abdullah@gmail.com / ibu123`)
-  console.log(`  Guru: ahmad.fazil@alfurqan.edu.my / guru123`)
-  console.log(`  Penolong Kanan: noraini.yusof@alfurqan.edu.my / pk123`)
-  console.log(`  Kerani: siti.ismail@alfurqan.edu.my / kerani123`)
-  console.log(`  Admin: admin@alfurqan.edu.my / admin123`)
+  console.log(`  Ibu Bapa (2 anak): aisyah.hamid@gmail.com / IbuBapa@Furqan2026`)
+  console.log(`  Ibu Bapa (2 anak): fatimah.abdullah@gmail.com / IbuBapa@Furqan2026`)
+  console.log(`  Guru: ahmad.fazil@alfurqan.edu.my / GuruFurqan@2026`)
+  console.log(`  Penolong Kanan: noraini.yusof@alfurqan.edu.my / PKFurqan@2026`)
+  console.log(`  Kerani: siti.ismail@alfurqan.edu.my / KeraniFurqan@2026`)
+  console.log(`  Admin: admin@alfurqan.edu.my / AdminFurqan@2026`)
 }
 
 main()

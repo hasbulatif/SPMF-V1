@@ -198,12 +198,12 @@ export function LoginView() {
                   Klik untuk mengisi automatik:
                 </p>
                 <div className="grid gap-1.5">
-                  <DemoButton label="Ibu Bapa (2 anak)" desc="aisyah.hamid@gmail.com / ibu123" onClick={() => fillDemo('aisyah.hamid@gmail.com', 'ibu123')} />
-                  <DemoButton label="Ibu Bapa (2 anak)" desc="fatimah.abdullah@gmail.com / ibu123" onClick={() => fillDemo('fatimah.abdullah@gmail.com', 'ibu123')} />
-                  <DemoButton label="Guru Kelas" desc="ahmad.fazil@alfurqan.edu.my / guru123" onClick={() => fillDemo('ahmad.fazil@alfurqan.edu.my', 'guru123')} />
-                  <DemoButton label="Penolong Kanan" desc="noraini.yusof@alfurqan.edu.my / pk123" onClick={() => fillDemo('noraini.yusof@alfurqan.edu.my', 'pk123')} />
-                  <DemoButton label="Kerani" desc="siti.ismail@alfurqan.edu.my / kerani123" onClick={() => fillDemo('siti.ismail@alfurqan.edu.my', 'kerani123')} />
-                  <DemoButton label="Admin" desc="admin@alfurqan.edu.my / admin123" onClick={() => fillDemo('admin@alfurqan.edu.my', 'admin123')} />
+                  <DemoButton label="Ibu Bapa (2 anak)" desc="aisyah.hamid@gmail.com" onClick={() => fillDemo('aisyah.hamid@gmail.com', 'IbuBapa@Furqan2026')} />
+                  <DemoButton label="Ibu Bapa (2 anak)" desc="fatimah.abdullah@gmail.com" onClick={() => fillDemo('fatimah.abdullah@gmail.com', 'IbuBapa@Furqan2026')} />
+                  <DemoButton label="Guru Kelas" desc="ahmad.fazil@alfurqan.edu.my" onClick={() => fillDemo('ahmad.fazil@alfurqan.edu.my', 'GuruFurqan@2026')} />
+                  <DemoButton label="Penolong Kanan" desc="noraini.yusof@alfurqan.edu.my" onClick={() => fillDemo('noraini.yusof@alfurqan.edu.my', 'PKFurqan@2026')} />
+                  <DemoButton label="Kerani" desc="siti.ismail@alfurqan.edu.my" onClick={() => fillDemo('siti.ismail@alfurqan.edu.my', 'KeraniFurqan@2026')} />
+                  <DemoButton label="Admin" desc="admin@alfurqan.edu.my" onClick={() => fillDemo('admin@alfurqan.edu.my', 'AdminFurqan@2026')} />
                 </div>
               </div>
 

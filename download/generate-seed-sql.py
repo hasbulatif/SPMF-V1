@@ -32,10 +32,10 @@ def gen_id(prefix="c"):
 
 # Staff
 staff = [
-    ("s_staff_01", "Ustaz Ahmad Faizal bin Hassan", "ahmad.fazil@alfurqan.edu.my", "guru123", "GURU", "AF-S-001"),
-    ("s_staff_02", "Puan Noraini binti Yusof", "noraini.yusof@alfurqan.edu.my", "pk123", "PENOLONG_KANAN", "AF-S-002"),
-    ("s_staff_03", "Puan Siti Khadijah binti Ismail", "siti.ismail@alfurqan.edu.my", "kerani123", "KERANI", "AF-S-003"),
-    ("s_staff_04", "Encik Zulkifli bin Rahman", "admin@alfurqan.edu.my", "admin123", "ADMIN", "AF-S-004"),
+    ("s_staff_01", "Ustaz Ahmad Faizal bin Hassan", "ahmad.fazil@alfurqan.edu.my", "GuruFurqan@2026", "GURU", "AF-S-001"),
+    ("s_staff_02", "Puan Noraini binti Yusof", "noraini.yusof@alfurqan.edu.my", "PKFurqan@2026", "PENOLONG_KANAN", "AF-S-002"),
+    ("s_staff_03", "Puan Siti Khadijah binti Ismail", "siti.ismail@alfurqan.edu.my", "KeraniFurqan@2026", "KERANI", "AF-S-003"),
+    ("s_staff_04", "Encik Zulkifli bin Rahman", "admin@alfurqan.edu.my", "AdminFurqan@2026", "ADMIN", "AF-S-004"),
 ]
 
 # Kelas
@@ -51,12 +51,12 @@ kelas_by_nama = {k[1]: k[0] for k in kelas_data}
 
 # Guardians
 guardians = [
-    ("g_guard_01", "Aisyah binti Hamid", "aisyah.hamid@gmail.com", "0123456789", "ibu123", "IBU"),
-    ("g_guard_02", "Razif bin Othman", "razif.othman@gmail.com", "0129876543", "bapa123", "BAPA"),
-    ("g_guard_03", "Fatimah binti Abdullah", "fatimah.abdullah@gmail.com", "0135678901", "ibu123", "IBU"),
-    ("g_guard_04", "Hasni bin Mohamed", "hasni.mohamed@gmail.com", "0144567890", "bapa123", "BAPA"),
-    ("g_guard_05", "Norhayati binti Salleh", "norhayati.salleh@gmail.com", "0156789012", "ibu123", "IBU"),
-    ("g_guard_06", "Kamal bin Ismail", "kamal.ismail@gmail.com", "0167890123", "bapa123", "BAPA"),
+    ("g_guard_01", "Aisyah binti Hamid", "aisyah.hamid@gmail.com", "0123456789", "IbuBapa@Furqan2026", "IBU"),
+    ("g_guard_02", "Razif bin Othman", "razif.othman@gmail.com", "0129876543", "IbuBapa@Furqan2026", "BAPA"),
+    ("g_guard_03", "Fatimah binti Abdullah", "fatimah.abdullah@gmail.com", "0135678901", "IbuBapa@Furqan2026", "IBU"),
+    ("g_guard_04", "Hasni bin Mohamed", "hasni.mohamed@gmail.com", "0144567890", "IbuBapa@Furqan2026", "BAPA"),
+    ("g_guard_05", "Norhayati binti Salleh", "norhayati.salleh@gmail.com", "0156789012", "IbuBapa@Furqan2026", "IBU"),
+    ("g_guard_06", "Kamal bin Ismail", "kamal.ismail@gmail.com", "0167890123", "IbuBapa@Furqan2026", "BAPA"),
 ]
 
 # Students
@@ -335,11 +335,11 @@ sql_lines.append("")
 sql_lines.append("-- ===== SEED SELESAI =====")
 sql_lines.append(f"-- Total: 4 staf, 6 kelas, 6 ibu bapa, 10 murid, {doc_id_counter+1} dokumen, 4 bahan kongsi")
 sql_lines.append("-- Akaun demo:")
-sql_lines.append("--   Ibu Bapa: aisyah.hamid@gmail.com / ibu123")
-sql_lines.append("--   Guru: ahmad.fazil@alfurqan.edu.my / guru123")
-sql_lines.append("--   Penolong Kanan: noraini.yusof@alfurqan.edu.my / pk123")
-sql_lines.append("--   Kerani: siti.ismail@alfurqan.edu.my / kerani123")
-sql_lines.append("--   Admin: admin@alfurqan.edu.my / admin123")
+sql_lines.append("--   Ibu Bapa: aisyah.hamid@gmail.com / IbuBapa@Furqan2026")
+sql_lines.append("--   Guru: ahmad.fazil@alfurqan.edu.my / GuruFurqan@2026")
+sql_lines.append("--   Penolong Kanan: noraini.yusof@alfurqan.edu.my / PKFurqan@2026")
+sql_lines.append("--   Kerani: siti.ismail@alfurqan.edu.my / KeraniFurqan@2026")
+sql_lines.append("--   Admin: admin@alfurqan.edu.my / AdminFurqan@2026")
 
 # Write to file
 output_path = "/home/z/my-project/download/02-supabase-seed.sql"

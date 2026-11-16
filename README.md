@@ -128,21 +128,21 @@ Klik butang demo pada halaman log masuk untuk auto-isi, atau masukkan manually:
 
 | Peranan | Emel | Kata Laluan | Catatan |
 |---|---|---|---|
-| Ibu Bapa (2 anak) | aisyah.hamid@gmail.com | ibu123 | Ahmad Danish (T1) & Aisyah Nur (T5) |
-| Ibu Bapa (2 anak) | fatimah.abdullah@gmail.com | ibu123 | Yusuf (T2) & Khadijah (T3) |
-| Ibu Bapa (2 anak) | kamal.ismail@gmail.com | bapa123 | Muhammad Ali (T4) & Zayyan (T6) |
-| Ibu Bapa (1 anak) | razif.othman@gmail.com | bapa123 | Aisyah Nur (T5) |
-| Ibu Bapa (1 anak) | hasni.mohamed@gmail.com | bapa123 | Sofia Nur (T1) |
-| Ibu Bapa (1 anak) | norhayati.salleh@gmail.com | ibu123 | Hamzah (T5) |
+| Ibu Bapa (2 anak) | aisyah.hamid@gmail.com | IbuBapa@Furqan2026 | Ahmad Danish (T1) & Aisyah Nur (T5) |
+| Ibu Bapa (2 anak) | fatimah.abdullah@gmail.com | IbuBapa@Furqan2026 | Yusuf (T2) & Khadijah (T3) |
+| Ibu Bapa (2 anak) | kamal.ismail@gmail.com | IbuBapa@Furqan2026 | Muhammad Ali (T4) & Zayyan (T6) |
+| Ibu Bapa (1 anak) | razif.othman@gmail.com | IbuBapa@Furqan2026 | Aisyah Nur (T5) |
+| Ibu Bapa (1 anak) | hasni.mohamed@gmail.com | IbuBapa@Furqan2026 | Sofia Nur (T1) |
+| Ibu Bapa (1 anak) | norhayati.salleh@gmail.com | IbuBapa@Furqan2026 | Hamzah (T5) |
 
 ### Staf Sekolah
 
 | Peranan | Emel | Kata Laluan |
 |---|---|---|
-| Guru Kelas | ahmad.fazil@alfurqan.edu.my | guru123 |
-| Penolong Kanan | noraini.yusof@alfurqan.edu.my | pk123 |
-| Kerani Pejabat | siti.ismail@alfurqan.edu.my | kerani123 |
-| Pentadbir Sistem | admin@alfurqan.edu.my | admin123 |
+| Guru Kelas | ahmad.fazil@alfurqan.edu.my | GuruFurqan@2026 |
+| Penolong Kanan | noraini.yusof@alfurqan.edu.my | PKFurqan@2026 |
+| Kerani Pejabat | siti.ismail@alfurqan.edu.my | KeraniFurqan@2026 |
+| Pentadbir Sistem | admin@alfurqan.edu.my | AdminFurqan@2026 |
 
 ## Struktur Projek
 

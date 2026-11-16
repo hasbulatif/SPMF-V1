@@ -207,9 +207,21 @@ export function LoginView() {
                 </div>
               </div>
 
-              <p className="mt-4 text-center text-xs text-muted-foreground">
-                Tiada akaun? Sila hubungi pejabat sekolah di 03-5512 3456.
-              </p>
+              <div className="mt-4 text-center text-xs text-muted-foreground space-y-2">
+                <p>Tiada akaun? Daftar sekarang:</p>
+                <div className="flex gap-2 justify-center">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    className="text-xs"
+                    onClick={() => setView({ name: 'signup' })}
+                  >
+                    Daftar Akaun Ibu Bapa / Guru
+                  </Button>
+                </div>
+                <p className="pt-1">Atau hubungi pejabat sekolah di 03-5512 3456.</p>
+              </div>
             </CardContent>
           </Card>
         </div>

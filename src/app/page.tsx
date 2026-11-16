@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useSession, useView } from '@/lib/store'
 import { api } from '@/lib/api'
 import { LoginView } from '@/components/views/login-view'
+import { SignupView } from '@/components/views/signup-view'
 import { ParentShell } from '@/components/shells/parent-shell'
 import { StaffShell } from '@/components/shells/staff-shell'
 import { ShareAccessView } from '@/components/views/share-access-view'
@@ -65,8 +66,11 @@ export default function Home() {
     return <ShareAccessView token={view.token} />
   }
 
-  // Jika tidak log masuk - papar login
+  // Jika tidak log masuk - papar login atau signup
   if (!user) {
+    if (view.name === 'signup') {
+      return <SignupView />
+    }
     return <LoginView />
   }
 

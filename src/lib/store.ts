@@ -35,6 +35,7 @@ export const useSession = create<SessionState>()(
 // Aplikasi "view router" - single-page, semua navigasi di-handle dengan state
 export type AppView =
   | { name: 'login' }
+  | { name: 'signup' }
   | { name: 'parent-dashboard' }
   | { name: 'parent-documents'; studentId?: string }
   | { name: 'parent-document-preview'; documentId: string }

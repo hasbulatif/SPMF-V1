@@ -1,0 +1,899 @@
+     1→[]SEKOLAH RENDAH AL FURQAN SHAH ALAM
+     2→
+     3→DOKUMEN KEPERLUAN PRODUK (PRD)
+     4→
+     5→Sistem Pengurusan Murid Al Furqan (SPMF)
+     6→
+     7→Portal Akses Dokumen Murid untuk Ibu Bapa/Penjaga
+     8→
+     9→  -----------------------------------------------------------------------
+    10→  Perkara              Butiran
+    11→  -------------------- --------------------------------------------------
+    12→  Versi                1.0 (Draf Awal)
+    13→
+    14→  Tarikh               16 November 2026
+    15→
+    16→  Status               Untuk semakan dan kelulusan pihak sekolah
+    17→
+    18→  Teknologi Utama      React (frontend) + pangkalan data dummy
+    19→
+    20→  Alat Pembangunan     z.ai (model GLM 5.2)
+    21→
+    22→  Bahasa Sistem        Bahasa Malaysia (utama), English (pilihan)
+    23→  -----------------------------------------------------------------------
+    24→
+    25→Kandungan
+    26→
+    27→Kandungan 2
+    28→
+    29→1. Ringkasan Eksekutif 4
+    30→
+    31→2. Latar Belakang dan Pernyataan Masalah 4
+    32→
+    33→2.1 Situasi Semasa 4
+    34→
+    35→2.2 Masalah Utama 4
+    36→
+    37→3. Objektif dan Metrik Kejayaan 4
+    38→
+    39→3.1 Objektif 4
+    40→
+    41→3.2 Metrik Kejayaan 5
+    42→
+    43→4. Skop Produk 5
+    44→
+    45→4.1 Dalam Skop (MVP) 5
+    46→
+    47→4.2 Luar Skop (Fasa Seterusnya) 5
+    48→
+    49→5. Pengguna dan Peranan 5
+    50→
+    51→5.1 Persona Utama 6
+    52→
+    53→6. Kaedah Akses Dokumen (Penyelesaian Teras) 6
+    54→
+    55→6.1 Reka Bentuk yang Disyorkan 6
+    56→
+    57→7. Keperluan Fungsian 7
+    58→
+    59→7.1 Pengesahihan dan Akaun 7
+    60→
+    61→7.2 Portal Dokumen Ibu Bapa 7
+    62→
+    63→7.3 Cetak dan PDF 7
+    64→
+    65→7.4 Perkongsian Selamat 8
+    66→
+    67→7.5 Panel Guru dan Admin 8
+    68→
+    69→8. Keperluan Bukan Fungsian 8
+    70→
+    71→9. Aliran Pengguna Utama 9
+    72→
+    73→9.1 Ibu Bapa Mengakses dan Mencetak Dokumen 9
+    74→
+    75→9.2 Guru Menerbitkan Dokumen 9
+    76→
+    77→9.3 Ibu Bapa Berkongsi Dokumen 9
+    78→
+    79→10. Seni Bina dan Teknologi 9
+    80→
+    81→10.1 Struktur Folder Cadangan 10
+    82→
+    83→11. Model Data dan Pangkalan Data Dummy 10
+    84→
+    85→11.1 Entiti 10
+    86→
+    87→11.2 Kategori Dokumen 11
+    88→
+    89→11.3 Data Sampel Minimum 11
+    90→
+    91→12. Reka Bentuk Antara Muka (Skrin Utama) 11
+    92→
+    93→13. Pelan Pembangunan dengan z.ai (GLM 5.2) 11
+    94→
+    95→13.1 Amalan Terbaik Menggunakan z.ai GLM 5.2 12
+    96→
+    97→14. Kriteria Penerimaan dan Ujian 12
+    98→
+    99→15. Risiko dan Mitigasi 13
+   100→
+   101→16. Peta Jalan Selepas MVP 13
+   102→
+   103→17. Glosari 13
+   104→
+   105→Lampiran A: Contoh Prompt untuk z.ai (GLM 5.2) 15
+   106→
+   107→Prompt Fasa 0 dan 1 15
+   108→
+   109→Prompt Fasa 2 dan 3 15
+   110→
+   111→Prompt Fasa 4 dan 5 15
+   112→
+   113→Prompt Fasa 6 dan 7 15
+   114→
+   115→Lampiran B: Contoh Struktur Data (JSON) 15
+   116→
+   117→1. Ringkasan Eksekutif
+   118→
+   119→Sistem Pengurusan Murid Al Furqan (SPMF) ialah aplikasi web untuk
+   120→Sekolah Rendah Al Furqan Shah Alam bagi menguruskan dan berkongsi
+   121→dokumen murid dengan ibu bapa/penjaga secara selamat, mudah dan boleh
+   122→dicetak atau dimuat turun sebagai PDF.
+   123→
+   124→Pada masa ini, guru perlu buat laporan manual, key in laporan murid,
+   125→jadikan dokumen, print dan berikan hardcopy kepada ibu bapa. Perkara ini
+   126→menyukarkan guru dan ibu bapa. Kerana ia melambatkan proses guru buat
+   127→laporan dan lambat untuk diberikan kepada ibu bapa. SPMF menggantikan
+   128→proses ini dengan satu log masuk ibu bapa yang memaparkan semua dokumen
+   129→anak-anak mereka di satu tempat.
+   130→
+   131→Fasa pertama (MVP) dibina menggunakan React dengan pangkalan data dummy
+   132→bagi tujuan demonstrasi dan pengesahan konsep (proof of concept) sebelum
+   133→disambungkan kepada pangkalan data sebenar.
+   134→
+   135→2. Latar Belakang dan Pernyataan Masalah
+   136→
+   137→2.1 Situasi Semasa
+   138→
+   139→-   Dokumen murid (laporan kemajuan, keputusan peperiksaan, surat rasmi,
+   140→    resit yuran) dikongsikan secara hardcopy dan secara berasingan.
+   141→
+   142→-   Ibu bapa perlu menunggu guru untuk memberi fail secara fizikal
+   143→    dokumen.
+   144→
+   145→-   Cetakan dan penukaran kepada PDF tidak seragam dan bergantung pada
+   146→    fail asal.
+   147→
+   148→2.2 Masalah Utama
+   149→
+   150→  -------------------------------------------------------------------------
+   151→  Bil.   Masalah                    Kesan
+   152→  ------ -------------------------- ---------------------------------------
+   153→  1      Guru perlu key in data di  Ibu bapa kecewa; ramai menghubungi
+   154→         tapak offline dan cetak    guru/pejabat untuk dapatkan fail
+   155→         laporan murid              
+   156→
+   157→  2      Ibu bapa lambat dapat      Risiko akan menyebabkan kesukaran
+   158→         dokumen                    kepada ibu bapa mendapatkannya di
+   159→                                    pejabat
+   160→
+   161→  3      Keluarga dengan lebih      Pengalaman pengguna lemah dan memakan
+   162→         seorang anak perlu         masa
+   163→         mengulang proses yang sama 
+   164→
+   165→  4      Tiada format cetakan/PDF   Dokumen kelihatan tidak profesional;
+   166→         yang seragam               sukar dicetak dengan betul
+   167→
+   168→  5      Tiada jejak audit siapa    Sukar mematuhi keperluan perlindungan
+   169→         mengakses dokumen          data peribadi
+   170→  -------------------------------------------------------------------------
+   171→
+   172→3. Objektif dan Metrik Kejayaan
+   173→
+   174→3.1 Objektif
+   175→
+   176→1.  Membolehkan ibu bapa mengakses semua dokumen anak mereka melalui
+   177→    satu log masuk.
+   178→
+   179→2.  Meningkatkan keselamatan akses melalui pengesahan berbilang faktor
+   180→    yang ringkas.
+   181→
+   182→3.  Menyediakan cetakan dan PDF berkualiti tinggi dengan satu klik.
+   183→
+   184→4.  Memudahkan guru dan pentadbir mengurus serta menerbitkan dokumen.
+   185→
+   186→5.  Menyediakan prototaip React berfungsi sepenuhnya dengan data dummy.
+   187→
+   188→3.2 Metrik Kejayaan
+   189→
+   190→  ------------------------------------------------------------------------
+   191→  Metrik                     Sasaran                Kaedah Ukuran
+   192→  -------------------------- ---------------------- ----------------------
+   193→  Masa untuk membuka dokumen Kurang daripada 3 klik Ujian UAT
+   194→  selepas log masuk          / 15 saat              
+   195→
+   196→  Kadar kejayaan tugasan ibu 90% atau lebih         UAT dengan 10 ibu bapa
+   197→  bapa (cari dan cetak                              
+   198→  dokumen)                                          
+   199→
+   200→  Aduan berkaitan akses      Kurang 70% berbanding  Rekod aduan pejabat
+   201→  dokumen                    sekarang               
+   202→
+   203→  Masa muat halaman senarai  Kurang daripada 2 saat Lighthouse
+   204→  dokumen                                           
+   205→
+   206→  Skor kebolehcapaian        Lighthouse             Lighthouse
+   207→                             Accessibility 90+      
+   208→  ------------------------------------------------------------------------
+   209→
+   210→4. Skop Produk
+   211→
+   212→4.1 Dalam Skop (MVP)
+   213→
+   214→-   Log masuk ibu bapa/penjaga dan pautan kepada seorang atau lebih anak
+   215→
+   216→-   Portal dokumen murid dengan carian dan penapis
+   217→
+   218→-   Pratonton, cetak dan muat turun PDF
+   219→
+   220→-   Pautan perkongsian selamat bertarikh luput (dengan PIN)
+   221→
+   222→-   Panel guru dan admin untuk memuat naik/menerbitkan dokumen
+   223→
+   224→-   Log audit akses
+   225→
+   226→-   Pangkalan data dummy (JSON/IndexedDB) dengan data sampel
+   227→
+   228→4.2 Luar Skop (Fasa Seterusnya)
+   229→
+   230→-   Pengesahan OTP SMS sebenar (MVP menggunakan OTP simulasi)
+   231→
+   232→-   Aplikasi mudah alih asli (iOS/Android)
+   233→
+   234→-   Pangkalan data pengeluaran dan hosting
+   235→
+   236→5. Pengguna dan Peranan
+   237→
+   238→  -----------------------------------------------------------------------
+   239→  Peranan        Keterangan                  Keupayaan Utama
+   240→  -------------- --------------------------- ----------------------------
+   241→  Ibu            Pengguna utama; mungkin     Log masuk, lihat, cetak,
+   242→  Bapa/Penjaga   mempunyai beberapa anak di  muat turun, kongsi dokumen
+   243→                 sekolah                     anak sendiri sahaja
+   244→
+   245→  Guru Kelas     Menguruskan dokumen murid   Muat naik, sunting draf,
+   246→                 kelas sendiri               hantar untuk kelulusan
+   247→
+   248→  Penolong Kanan Meluluskan dan menerbitkan  Lulus/tolak, terbit, lihat
+   249→  / Guru Besar   dokumen                     laporan
+   250→
+   251→  Kerani / Staf  Mengurus data murid dan     CRUD murid, pautkan ibu
+   252→  Pejabat        akaun ibu bapa              bapa, set semula akses
+   253→
+   254→  Pentadbir      Pengurusan teknikal         Urus pengguna, peranan,
+   255→  Sistem                                     tetapan, log audit
+   256→  -----------------------------------------------------------------------
+   257→
+   258→5.1 Persona Utama
+   259→
+   260→Puan Aisyah (38), ibu kepada dua murid (Tahun 2 dan Tahun 5).
+   261→Menggunakan telefon pintar, sibuk bekerja, mahu melihat laporan
+   262→kedua-dua anak dengan cepat tanpa mengingatiperlu tunggu guru berikan
+   263→hardcopy dokumen, dan mencetak dokumen untuk kegunaan pejabat atau pihak
+   264→lain.
+   265→
+   266→6. Kaedah Akses Dokumen (Penyelesaian Teras)
+   267→
+   268→Bahagian ini menyelesaikan masalah utama: ibu bapa perlu memasukkan ID
+   269→murid untuk setiap akses. Empat pilihan dinilai di bawah.
+   270→
+   271→  --------------------------------------------------------------------------
+   272→  Pilihan       Cara Kerja            Kelebihan          Kekurangan
+   273→  ------------- --------------------- ------------------ -------------------
+   274→  A. Akaun ibu  Log masuk dengan No.  Satu log masuk;    Perlu pendaftaran
+   275→  bapa          Telefon + OTP (atau   selamat; sesuai    awal oleh sekolah
+   276→  (Disyorkan)   emel + kata laluan).  untuk adik-beradik 
+   277→                Satu akaun dipautkan                     
+   278→                kepada semua anak.                       
+   279→
+   280→  B. Pautan     Sekolah menjana       Tiada akaun        PIN perlu dikongsi;
+   281→  peribadi +    pautan unik per       diperlukan; pantas kurang kemas bagi
+   282→  PIN           dokumen/murid; dibuka                    banyak dokumen
+   283→                dengan PIN 6 digit                       
+   284→
+   285→  C. Kod QR     Kod QR pada surat/kad Mudah untuk        Bergantung pada
+   286→                dibuka melalui        dokumen bercetak   kamera telefon
+   287→                telefon dan disahkan                     
+   288→                PIN                                      
+   289→
+   290→  D. ID murid   Masukkan ID murid     Mudah dibina       Tidak selamat dan
+   291→  sahaja (sedia setiap kali                              berulang; TIDAK
+   292→  ada)                                                   disyorkan
+   293→  --------------------------------------------------------------------------
+   294→
+   295→6.1 Reka Bentuk yang Disyorkan
+   296→
+   297→Gabungan Pilihan A sebagai kaedah utama, serta Pilihan B/C sebagai
+   298→kaedah perkongsian sekali guna:
+   299→
+   300→-   Pendaftaran awal: sekolah mencipta akaun ibu bapa menggunakan No.
+   301→    Telefon yang direkodkan dan memautkan ID murid (satu kali sahaja).
+   302→
+   303→-   Log masuk: ibu bapa memasukkan No. Telefon dan OTP. Selepas berjaya,
+   304→    semua anak dipaparkan sebagai kad profil.
+   305→
+   306→-   ID murid tidak lagi dimasukkan semasa akses; ia hanya digunakan oleh
+   307→    sekolah semasa pautan akaun, dan boleh dijadikan faktor pengesahan
+   308→    tambahan semasa pendaftaran kali pertama (contoh: 4 digit akhir No.
+   309→    KP penjaga).
+   310→
+   311→-   Perkongsian: ibu bapa boleh menjana pautan selamat (PIN + tarikh
+   312→    luput 24 jam/7 hari) untuk dihantar kepada pihak lain, contohnya
+   313→    pasangan atau agensi.
+   314→
+   315→-   Sesi: kekal log masuk 30 hari pada peranti dipercayai; log keluar
+   316→    automatik selepas 15 minit tidak aktif pada peranti awam.
+   317→
+   318→-   Pengesahan keselamatan: had cubaan OTP (5 kali) dan kunci sementara
+   319→    15 minit.
+   320→
+   321→Nota: dalam MVP dummy, OTP disimulasikan (contoh: 123456) dan pengesahan
+   322→dilakukan di sisi klien. Ini hanya untuk demonstrasi; versi pengeluaran
+   323→WAJIB menggunakan pengesahan di sisi pelayan.
+   324→
+   325→7. Keperluan Fungsian
+   326→
+   327→Keutamaan menggunakan kaedah MoSCoW: M (Mesti), S (Sepatutnya), C
+   328→(Boleh), W (Tidak sekarang).
+   329→
+   330→7.1 Pengesahihan dan Akaun
+   331→
+   332→  -------------------------------------------------------------------------
+   333→  ID      Keperluan                                  Keutamaan   Peranan
+   334→  ------- ------------------------------------------ ----------- ----------
+   335→  FR-01   Ibu bapa boleh log masuk dengan            M           Ibu bapa
+   336→          menggunakan email dan password sahaja                  
+   337→
+   338→  FR-02   Satu akaun boleh dipautkan kepada beberapa M           Ibu bapa
+   339→          murid (adik-beradik).                                  
+   340→
+   341→  FR-03   Pilihan log masuk alternatif: emel dan     S           Ibu bapa
+   342→          kata laluan.                                           
+   343→
+   344→  FR-04   Had cubaan gagal dan kunci akaun           M           Semua
+   345→          sementara.                                             
+   346→
+   347→  FR-05   Admin/kerani boleh mencipta akaun, key in  M           Admin
+   348→          murid dan menetapkan semula akses.                     
+   349→
+   350→  FR-06   Kawalan akses berasaskan peranan (RBAC):   M           Semua
+   351→          ibu bapa hanya melihat anak sendiri.                   
+   352→  -------------------------------------------------------------------------
+   353→
+   354→7.2 Portal Dokumen Ibu Bapa
+   355→
+   356→  -------------------------------------------------------------------------
+   357→  ID      Keperluan                                  Keutamaan   Peranan
+   358→  ------- ------------------------------------------ ----------- ----------
+   359→  FR-10   Halaman utama memaparkan kad setiap anak   M           Ibu bapa
+   360→          (nama, kelas, tahun, gambar/inisial).                  
+   361→
+   362→  FR-11   Senarai semua dokumen per murid dengan     M           Ibu bapa
+   363→          kategori, tarikh, status baharu/dibaca.                
+   364→
+   365→  FR-12   Carian mengikut tajuk dan penapis          M           Ibu bapa
+   366→          kategori, tahun, penggal.                              
+   367→
+   368→  FR-13   Pratonton dokumen dalam halaman tanpa muat M           Ibu bapa
+   369→          turun.                                                 
+   370→
+   371→  FR-14   Butang tukar anak pantas tanpa log masuk   M           Ibu bapa
+   372→          semula.                                                
+   373→
+   374→  FR-15   Pemberitahuan dalam aplikasi apabila       S           Ibu bapa
+   375→          dokumen baharu diterbitkan.                            
+   376→
+   377→  FR-16   Pilih beberapa dokumen dan muat turun      C           Ibu bapa
+   378→          sebagai satu fail ZIP/PDF gabungan.                    
+   379→  -------------------------------------------------------------------------
+   380→
+   381→7.3 Cetak dan PDF
+   382→
+   383→  -------------------------------------------------------------------------
+   384→  ID      Keperluan                                  Keutamaan   Peranan
+   385→  ------- ------------------------------------------ ----------- ----------
+   386→  FR-20   Butang Cetak dengan pratonton format A4,   M           Ibu bapa
+   387→          margin dan pengepala sekolah seragam.                  
+   388→
+   389→  FR-21   Butang Muat Turun PDF menghasilkan fail    M           Ibu bapa
+   390→          dengan nama piawai (contoh:                            
+   391→          LaporanKemajuan_AF2026001_Penggal1.pdf).               
+   392→
+   393→  FR-22   Cetakan menyembunyikan elemen navigasi dan M           Ibu bapa
+   394→          menggunakan stylesheet cetak khas.                     
+   395→
+   396→  FR-23   Tera air (watermark) 'Salinan Ibu Bapa'    S           Sistem
+   397→          dan kod pengesahan/QR pada PDF.                        
+   398→
+   399→  FR-24   Cetak kumpulan beberapa dokumen sekaligus. C           Ibu bapa
+   400→  -------------------------------------------------------------------------
+   401→
+   402→7.4 Perkongsian Selamat
+   403→
+   404→  -------------------------------------------------------------------------
+   405→  ID      Keperluan                                  Keutamaan   Peranan
+   406→  ------- ------------------------------------------ ----------- ----------
+   407→  FR-30   Jana pautan perkongsian bertarikh luput    S           Ibu bapa
+   408→          (24 jam, 7 hari, 30 hari).                             
+   409→
+   410→  FR-31   Pautan dilindungi PIN 6 digit; had cubaan  S           Ibu bapa
+   411→          dan boleh dibatalkan.                                  
+   412→
+   413→  FR-32   Jana Kod QR untuk pautan perkongsian.      C           Ibu bapa
+   414→  -------------------------------------------------------------------------
+   415→
+   416→7.5 Panel Guru dan Admin
+   417→
+   418→  -------------------------------------------------------------------------
+   419→  ID      Keperluan                                  Keutamaan   Peranan
+   420→  ------- ------------------------------------------ ----------- ----------
+   421→  FR-40   Muat naik dokumen (PDF) atau jana dokumen  M           Guru
+   422→          daripada templat (laporan, slip).                      
+   423→
+   424→  FR-41   Aliran kerja: Draf, Semakan, Diluluskan,   S           Guru/PK
+   425→          Diterbitkan, Ditarik balik.                            
+   426→
+   427→  FR-42   Terbit kepada seorang murid, satu kelas    M           Guru
+   428→          atau seluruh tahun (surat edaran).                     
+   429→
+   430→  FR-43   CRUD data murid dan kelas; import data     M           Kerani
+   431→          murid melalui fail CSV.                                
+   432→
+   433→  FR-44   Dashboard ringkasan: jumlah dokumen,       S           PK/Admin
+   434→          dibuka/belum dibuka oleh ibu bapa.                     
+   435→
+   436→  FR-45   Log audit: siapa, bila dan dokumen apa     M           Admin
+   437→          diakses/dimuat turun/dikongsi.                         
+   438→  -------------------------------------------------------------------------
+   439→
+   440→8. Keperluan Bukan Fungsian
+   441→
+   442→  ---------------------------------------------------------------------------
+   443→  Kategori              Keperluan
+   444→  --------------------- -----------------------------------------------------
+   445→  Prestasi              Halaman utama dimuat dalam kurang 2 saat pada
+   446→                        sambungan 4G; PDF dijana dalam kurang 5 saat bagi
+   447→                        dokumen 3 muka surat.
+   448→
+   449→  Keselamatan           Pengesahan di sisi pelayan (versi pengeluaran),
+   450→                        HTTPS, token sesi, perlindungan XSS/CSRF, had kadar
+   451→                        cubaan, tiada ID murid dalam URL awam.
+   452→
+   453→  Perlindungan Data     Mematuhi Akta Perlindungan Data Peribadi 2010 (PDPA)
+   454→                        Malaysia: kebenaran, tujuan terhad, akses minimum,
+   455→                        tempoh simpanan ditetapkan dan hak pembetulan data.
+   456→
+   457→  Kebolehcapaian        Mematuhi WCAG 2.1 AA: kontras warna, navigasi papan
+   458→                        kekunci, label ARIA, saiz fon boleh laras.
+   459→
+   460→  Responsif             Mobile-first: berfungsi pada skrin 360px hingga
+   461→                        desktop; majoriti ibu bapa menggunakan telefon
+   462→                        pintar.
+   463→
+   464→  Bahasa                Antara muka dalam Bahasa Malaysia; struktur i18n
+   465→                        untuk menyokong English.
+   466→
+   467→  Keserasian            Chrome, Edge, Safari, Firefox (2 versi terkini); iOS
+   468→                        15+ dan Android 10+.
+   469→
+   470→  Kebolehselenggaraan   TypeScript, ESLint/Prettier, komponen boleh guna
+   471→                        semula, liputan ujian unit 70% atau lebih bagi logik
+   472→                        teras.
+   473→
+   474→  Ketersediaan          Sasaran 99% pada waktu sekolah (versi pengeluaran).
+   475→  ---------------------------------------------------------------------------
+   476→
+   477→9. Aliran Pengguna Utama
+   478→
+   479→9.1 Ibu Bapa Mengakses dan Mencetak Dokumen
+   480→
+   481→1.  Ibu bapa membuka SPMF dan memasukkan emel dan password
+   482→
+   483→2.  Halaman utama memaparkan semua anak yang dipautkan.
+   484→
+   485→3.  Ibu bapa memilih anak dan melihat senarai dokumen.
+   486→
+   487→4.  Ibu bapa memilih dokumen untuk pratonton.
+   488→
+   489→5.  Ibu bapa menekan Cetak atau Muat Turun PDF.
+   490→
+   491→6.  Sistem merekodkan tindakan dalam log audit.
+   492→
+   493→9.2 Guru Menerbitkan Dokumen
+   494→
+   495→1.  Guru log masuk dan memilih kelas.
+   496→
+   497→2.  Guru memuat naik atau menjana dokumen murid.
+   498→
+   499→3.  Penolong Kanan meluluskan dan menerbitkan.
+   500→
+   501→4.  Ibu bapa menerima pemberitahuan dokumen baharu.
+   502→
+   503→9.3 Ibu Bapa Berkongsi Dokumen
+   504→
+   505→1.  Ibu bapa membuka dokumen dan menekan Kongsi.
+   506→
+   507→2.  Memilih tempoh sah dan menjana PIN.
+   508→
+   509→3.  Sistem memaparkan pautan dan Kod QR untuk dihantar.
+   510→
+   511→4.  Penerima membuka pautan dan memasukkan PIN untuk melihat dokumen.
+   512→
+   513→10. Seni Bina dan Teknologi
+   514→
+   515→  -----------------------------------------------------------------------
+   516→  Lapisan            Cadangan
+   517→  ------------------ ----------------------------------------------------
+   518→  Frontend           React 18 + Vite + TypeScript; React Router v6;
+   519→                     Tailwind CSS
+   520→
+   521→  Pengurusan State   React Context + TanStack Query (atau Zustand)
+   522→
+   523→  Pangkalan Data     Fail JSON dalam /src/data dimuatkan ke IndexedDB
+   524→  Dummy              (Dexie.js) supaya CRUD berfungsi dan kekal selepas
+   525→                     muat semula. Alternatif: json-server atau MSW (Mock
+   526→                     Service Worker).
+   527→
+   528→  Lapisan Data       Repository pattern (studentRepo, documentRepo,
+   529→                     authRepo) supaya mudah ditukar ke API sebenar
+   530→                     kemudian.
+   531→
+   532→  Cetak              react-to-print + CSS @media print (A4)
+   533→
+   534→  Penjanaan PDF      @react-pdf/renderer (dokumen berstruktur) atau
+   535→                     html2pdf.js / jsPDF
+   536→
+   537→  Kod QR             qrcode.react
+   538→
+   539→  Borang dan         React Hook Form + Zod
+   540→  Validasi           
+   541→
+   542→  Ujian              Vitest + React Testing Library; Playwright untuk E2E
+   543→
+   544→  Penyebaran Demo    Vercel / Netlify / GitHub Pages
+   545→  -----------------------------------------------------------------------
+   546→
+   547→10.1 Struktur Folder Cadangan
+   548→
+   549→-   src/components (UI boleh guna semula)
+   550→
+   551→-   src/pages (Login, Dashboard, SenaraiDokumen, Pratonton, Kongsi,
+   552→    Admin)
+   553→
+   554→-   src/data (seed JSON) dan src/db (Dexie)
+   555→
+   556→-   src/repositories (akses data berabstrak)
+   557→
+   558→-   src/templates (templat PDF/cetakan)
+   559→
+   560→-   src/i18n (ms.json, en.json)
+   561→
+   562→-   src/utils (audit, auth, format)
+   563→
+   564→11. Model Data dan Pangkalan Data Dummy
+   565→
+   566→11.1 Entiti
+   567→
+   568→  -----------------------------------------------------------------------
+   569→  Entiti         Medan Utama                          Hubungan
+   570→  -------------- ------------------------------------ -------------------
+   571→  Student        id, idMurid (cth: AF2026001), nama,  Banyak ke satu:
+   572→  (Murid)        tahun, kelasId, jantina, status      Kelas; banyak ke
+   573→                                                      banyak: Guardian
+   574→
+   575→  Guardian (Ibu  id, nama, noTelefon, emel, hubungan, Banyak ke banyak:
+   576→  Bapa)          status                               Student
+   577→
+   578→  Class (Kelas)  id, nama (cth: 5 Ibnu Sina), tahun,  Satu ke banyak:
+   579→                 guruKelasId                          Student
+   580→
+   581→  Document       id, studentId, kategori, tajuk,      Banyak ke satu:
+   582→                 penggal, tarikh, status,             Student
+   583→                 failUrl/kandungan, diterbitOleh      
+   584→
+   585→  ShareLink      id, documentId, token, pinHash,      Banyak ke satu:
+   586→                 tarikhLuput, bilanganAkses,          Document
+   587→                 dibatalkan                           
+   588→
+   589→  User (Staf)    id, nama, emel, peranan              Satu ke banyak:
+   590→                                                      Class
+   591→
+   592→  AuditLog       id, userId, tindakan, documentId,    -
+   593→                 masa, peranti                        
+   594→  -----------------------------------------------------------------------
+   595→
+   596→11.2 Kategori Dokumen
+   597→
+   598→-   Laporan Kemajuan Murid
+   599→
+   600→-   Slip Keputusan Peperiksaan
+   601→
+   602→-   Surat Pengesahan Murid
+   603→
+   604→-   Surat Edaran Sekolah
+   605→
+   606→-   Resit Yuran
+   607→
+   608→-   Rekod Kehadiran
+   609→
+   610→-   Sijil dan Anugerah
+   611→
+   612→-   Borang Kebenaran/Maklum Balas
+   613→
+   614→11.3 Data Sampel Minimum
+   615→
+   616→-   10 murid (Tahun 1 hingga Tahun 6) di 6 kelas.
+   617→
+   618→-   6 ibu bapa, termasuk 2 akaun dengan lebih seorang anak (untuk
+   619→    menguji FR-02 dan FR-14).
+   620→
+   621→-   3 staf (guru kelas, penolong kanan, kerani) dan 1 admin.
+   622→
+   623→-   40 dokumen merentas semua kategori dan status.
+   624→
+   625→Semua data sampel mestilah rekaan sepenuhnya. Jangan gunakan data murid
+   626→sebenar dalam prototaip. Contoh: murid 'Ahmad Danish bin Razif', ID
+   627→'AF2026001', Tahun 5 Ibnu Sina.
+   628→
+   629→12. Reka Bentuk Antara Muka (Skrin Utama)
+   630→
+   631→  -------------------------------------------------------------------------
+   632→  Bil.   Skrin                Kandungan Utama
+   633→  ------ -------------------- ---------------------------------------------
+   634→  1      Log Masuk            Medan No. Telefon, hantar OTP, medan OTP,
+   635→                              pautan bantuan
+   636→
+   637→  2      Papan Pemuka Ibu     Kad anak, dokumen terkini, pemberitahuan
+   638→         Bapa                 
+   639→
+   640→  3      Senarai Dokumen      Carian, penapis, jadual/kad dokumen, lencana
+   641→                              BAHARU
+   642→
+   643→  4      Pratonton Dokumen    Paparan A4, butang Cetak, Muat Turun PDF,
+   644→                              Kongsi
+   645→
+   646→  5      Kongsi Dokumen       Pilih tempoh, PIN, pautan, Kod QR, senarai
+   647→                              pautan aktif
+   648→
+   649→  6      Papan Pemuka         Statistik, muat naik, aliran kelulusan
+   650→         Guru/Admin           
+   651→
+   652→  7      Pengurusan Murid dan Jadual CRUD, import CSV, pautan murid-ibu
+   653→         Ibu Bapa             bapa
+   654→
+   655→  8      Log Audit            Jadual aktiviti dengan penapis tarikh dan
+   656→                              pengguna
+   657→  -------------------------------------------------------------------------
+   658→
+   659→Panduan reka bentuk: warna rasmi sekolah, fon jelas (Inter/Arial),
+   660→butang besar untuk skrin sentuh, istilah mudah dalam Bahasa Malaysia,
+   661→dan mesej ralat yang membantu (contoh: 'No. telefon tidak didaftarkan.
+   662→Sila hubungi pejabat sekolah.').
+   663→
+   664→13. Pelan Pembangunan dengan z.ai (GLM 5.2)
+   665→
+   666→Pembangunan dilakukan secara berperingkat melalui gesaan (prompt) kepada
+   667→z.ai menggunakan model GLM 5.2. Setiap fasa disemak dan diuji sebelum
+   668→fasa seterusnya.
+   669→
+   670→  -----------------------------------------------------------------------
+   671→  Fasa     Skop                    Hasil                      Anggaran
+   672→  -------- ----------------------- -------------------------- -----------
+   673→  0        Penyediaan projek:      Projek kosong boleh        0.5 hari
+   674→           Vite, React, TS,        dijalankan                 
+   675→           Tailwind, struktur                                 
+   676→           folder, i18n                                       
+   677→
+   678→  1        Pangkalan data dummy:   Data boleh dibaca dan      1 hari
+   679→           seed JSON, Dexie,       ditulis                    
+   680→           repository                                         
+   681→
+   682→  2        Pengesahihan: log masuk Ibu bapa dan staf boleh    1.5 hari
+   683→           OTP simulasi, RBAC,     log masuk                  
+   684→           route guard                                        
+   685→
+   686→  3        Portal ibu bapa: papan  FR-10 hingga FR-14         2 hari
+   687→           pemuka, senarai                                    
+   688→           dokumen, carian, tukar                             
+   689→           anak                                               
+   690→
+   691→  4        Pratonton, cetak, PDF   FR-20 hingga FR-23         2 hari
+   692→
+   693→  5        Perkongsian selamat:    FR-30 hingga FR-32         1 hari
+   694→           pautan, PIN, QR                                    
+   695→
+   696→  6        Panel guru/admin,       FR-40 hingga FR-45         3 hari
+   697→           aliran kelulusan, audit                            
+   698→           log                                                
+   699→
+   700→  7        Ujian, kebolehcapaian,  Prototaip sedia            2 hari
+   701→           pembaikan, UAT          didemonstrasi              
+   702→  -----------------------------------------------------------------------
+   703→
+   704→13.1 Amalan Terbaik Menggunakan z.ai GLM 5.2
+   705→
+   706→-   Berikan PRD ini sebagai konteks, kemudian minta satu fasa pada satu
+   707→    masa.
+   708→
+   709→-   Nyatakan teknologi dengan jelas (React 18, Vite, TypeScript,
+   710→    Tailwind) supaya kod konsisten.
+   711→
+   712→-   Minta kod lengkap per fail beserta laluan fail, dan arahan untuk
+   713→    menjalankannya.
+   714→
+   715→-   Selepas setiap fasa, jalankan aplikasi, uji, dan berikan mesej ralat
+   716→    sebenar kepada z.ai untuk pembetulan.
+   717→
+   718→-   Simpan kod dalam Git dan buat komit selepas setiap fasa berjaya.
+   719→
+   720→14. Kriteria Penerimaan dan Ujian
+   721→
+   722→  -------------------------------------------------------------------------
+   723→  ID       Senario Ujian                                Keputusan Dijangka
+   724→  -------- -------------------------------------------- -------------------
+   725→  UAT-01   Ibu bapa dengan 2 anak log masuk dan menukar Kedua-dua anak
+   726→           antara anak                                  dipaparkan tanpa ID
+   727→                                                        dimasukkan
+   728→
+   729→  UAT-02   Ibu bapa cuba membuka dokumen murid lain     Akses ditolak (403)
+   730→           melalui URL                                  
+   731→
+   732→  UAT-03   Cetak Laporan Kemajuan                       Format A4 kemas,
+   733→                                                        tiada elemen
+   734→                                                        navigasi
+   735→
+   736→  UAT-04   Muat turun PDF                               Fail dinamakan
+   737→                                                        mengikut piawai dan
+   738→                                                        boleh dibuka
+   739→
+   740→  UAT-05   Jana pautan 24 jam dan buka selepas luput    Pautan ditolak
+   741→                                                        dengan mesej jelas
+   742→
+   743→  UAT-06   PIN salah 5 kali                             Pautan dikunci
+   744→                                                        sementara
+   745→
+   746→  UAT-07   Guru menerbitkan dokumen                     Muncul dalam portal
+   747→                                                        ibu bapa dengan
+   748→                                                        lencana BAHARU
+   749→
+   750→  UAT-08   Paparan pada skrin 360px                     Semua fungsi boleh
+   751→                                                        digunakan
+   752→
+   753→  UAT-09   Semakan log audit selepas muat turun         Rekod tindakan
+   754→                                                        wujud dengan masa
+   755→                                                        dan pengguna
+   756→  -------------------------------------------------------------------------
+   757→
+   758→15. Risiko dan Mitigasi
+   759→
+   760→  -------------------------------------------------------------------------
+   761→  Risiko                  Tahap       Mitigasi
+   762→  ----------------------- ----------- -------------------------------------
+   763→  Pengesahan di sisi      Tinggi      Gunakan data rekaan sahaja; wajib
+   764→  klien tidak selamat                 pelayan sebenar sebelum pengeluaran
+   765→  dalam versi dummy                   
+   766→
+   767→  Kebocoran data peribadi Tinggi      Akses minimum, enkripsi, log audit,
+   768→  murid (PDPA)                        dasar privasi dan simpanan data
+   769→
+   770→  Ibu bapa kurang mahir   Sederhana   UI ringkas, panduan bergambar,
+   771→  teknologi                           sokongan pejabat
+   772→
+   773→  No. telefon tidak       Sederhana   Proses kemas kini dengan pejabat;
+   774→  dikemas kini                        akaun emel sandaran
+   775→
+   776→  Kod dijana AI           Sederhana   Semakan kod, ujian automatik, UAT
+   777→  mengandungi pepijat                 
+   778→
+   779→  Kualiti cetakan berbeza Rendah      Uji pada Chrome/Safari; gunakan CSS
+   780→  antara pelayar                      cetak khas dan pustaka PDF
+   781→  -------------------------------------------------------------------------
+   782→
+   783→16. Peta Jalan Selepas MVP
+   784→
+   785→-   Fasa 2: Backend sebenar (Node.js/NestJS + PostgreSQL), OTP SMS
+   786→    sebenar, penyimpanan fail selamat.
+   787→
+   788→-   Fasa 3: Notifikasi WhatsApp/emel, pembayaran yuran dalam talian,
+   789→    aplikasi PWA.
+   790→
+   791→-   Fasa 4: Integrasi sistem sekolah sedia ada, analitik, pelbagai
+   792→    bahasa.
+   793→
+   794→17. Glosari
+   795→
+   796→  -----------------------------------------------------------------------
+   797→  Istilah            Maksud
+   798→  ------------------ ----------------------------------------------------
+   799→  PRD                Product Requirement Document: dokumen keperluan
+   800→                     produk
+   801→
+   802→  MVP                Minimum Viable Product: versi awal yang boleh
+   803→                     digunakan
+   804→
+   805→  OTP                One-Time Password: kata laluan sekali guna
+   806→
+   807→  RBAC               Role-Based Access Control: kawalan akses berasaskan
+   808→                     peranan
+   809→
+   810→  PDPA               Akta Perlindungan Data Peribadi 2010 (Malaysia)
+   811→
+   812→  UAT                User Acceptance Testing: ujian penerimaan pengguna
+   813→
+   814→  WCAG               Web Content Accessibility Guidelines
+   815→
+   816→  Dummy DB           Pangkalan data rekaan untuk prototaip
+   817→  -----------------------------------------------------------------------
+   818→
+   819→Lampiran A: Contoh Prompt untuk z.ai (GLM 5.2)
+   820→
+   821→Salin dan tampal prompt di bawah, satu fasa pada satu masa. Lampirkan
+   822→PRD ini sebagai konteks.
+   823→
+   824→Prompt Fasa 0 dan 1
+   825→
+   826→Anda ialah jurutera perisian React yang pakar. Bina projek SPMF (Sistem
+   827→Pengurusan Murid Al Furqan) untuk Sekolah Rendah Al Furqan Shah Alam
+   828→berdasarkan PRD yang dilampirkan. Gunakan React 18, Vite, TypeScript,
+   829→Tailwind CSS, React Router v6 dan Dexie.js (IndexedDB) sebagai pangkalan
+   830→data dummy. Antara muka mesti dalam Bahasa Malaysia. Langkah 1: sediakan
+   831→struktur folder, konfigurasi dan fail i18n (ms.json). Langkah 2: cipta
+   832→seed data JSON (10 murid, 6 ibu bapa termasuk 2 dengan lebih seorang
+   833→anak, 3 staf, 40 dokumen) dan repository untuk studentRepo,
+   834→guardianRepo, documentRepo, authRepo. Berikan kod lengkap setiap fail
+   835→dengan laluan fail dan arahan menjalankan projek.
+   836→
+   837→Prompt Fasa 2 dan 3
+   838→
+   839→Teruskan projek SPMF. Bina log masuk ibu bapa menggunakan No. Telefon
+   840→dan OTP simulasi (123456), had 5 cubaan, route guard berasaskan peranan,
+   841→dan papan pemuka ibu bapa yang memaparkan kad setiap anak. Bina halaman
+   842→senarai dokumen dengan carian, penapis kategori/tahun/penggal, lencana
+   843→BAHARU dan butang tukar anak pantas. Pastikan ibu bapa hanya boleh
+   844→melihat dokumen anak sendiri. Reka bentuk mobile-first dan mematuhi WCAG
+   845→2.1 AA.
+   846→
+   847→Prompt Fasa 4 dan 5
+   848→
+   849→Bina halaman pratonton dokumen berformat A4 dengan pengepala sekolah.
+   850→Tambah butang Cetak (react-to-print dengan CSS @media print) dan Muat
+   851→Turun PDF dengan nama fail piawai (JenisDokumen_IDMurid_Penggal.pdf).
+   852→Tambah ciri Kongsi: jana pautan bertarikh luput (24 jam/7 hari/30 hari),
+   853→PIN 6 digit (simpan hash), Kod QR (qrcode.react), had cubaan PIN dan
+   854→pembatalan pautan. Rekod semua tindakan dalam AuditLog.
+   855→
+   856→Prompt Fasa 6 dan 7
+   857→
+   858→Bina panel guru/admin: muat naik dan jana dokumen daripada templat,
+   859→aliran kerja Draf-Semakan-Lulus-Terbit, terbit kepada murid/kelas/tahun,
+   860→CRUD murid dan ibu bapa, import CSV, dashboard ringkasan dan halaman log
+   861→audit. Kemudian tulis ujian Vitest untuk logik auth, kawalan akses dan
+   862→perkongsian, serta semak kebolehcapaian dan pembaikan pepijat.
+   863→
+   864→Lampiran B: Contoh Struktur Data (JSON)
+   865→
+   866→{
+   867→
+   868→"students": [{
+   869→
+   870→"id": "s001", "idMurid": "AF2026001",
+   871→
+   872→"nama": "Ahmad Danish bin Razif",
+   873→
+   874→"tahun": 5, "kelasId": "c5-ibnusina", "guardianIds": ["g001"]
+   875→
+   876→}],
+   877→
+   878→"guardians": [{
+   879→
+   880→"id": "g001", "nama": "Aisyah binti Hamid",
+   881→
+   882→"noTelefon": "0123456789", "studentIds": ["s001", "s014"]
+   883→
+   884→}],
+   885→
+   886→"documents": [{
+   887→
+   888→"id": "d001", "studentId": "s001",
+   889→
+   890→"kategori": "Laporan Kemajuan", "tajuk": "Laporan Penggal 1 2026",
+   891→
+   892→"tarikh": "2026-06-20", "status": "Diterbitkan"
+   893→
+   894→}]
+   895→
+   896→}
+   897→
+   898→Nota: semua nama dan nombor di atas ialah data rekaan.
+   899→

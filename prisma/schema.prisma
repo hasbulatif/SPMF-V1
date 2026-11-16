@@ -1,0 +1,179 @@
+// Sistem Pengurusan Murid Al Furqan (SPMF)
+// Sekolah Rendah Al Furqan Shah Alam
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ===== Staf Sekolah (Guru / Penolong Kanan / Kerani / Admin) =====
+model Staff {
+  id        String   @id @default(cuid())
+  nama      String
+  emel      String   @unique
+  password  String // dummy - plaintext for prototype only
+  peranan   String   // GURU | PENOLONG_KANAN | KERANI | ADMIN
+  noPekerja String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  kelasGuru       Kelas[]   @relation("KelasGuru")
+  dokumenDiterbit Dokumen[] @relation("DokumenPenerbit")
+  auditLogs       AuditLog[]
+}
+
+// ===== Ibu Bapa / Penjaga =====
+model Guardian {
+  id        String   @id @default(cuid())
+  nama      String
+  emel      String   @unique
+  noTelefon String
+  password  String // dummy - plaintext for prototype only
+  hubungan  String   // IBU | BAPA | PENJAGA
+  status    String   @default("AKTIF") // AKTIF | DISEKAT
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  students    GuardianStudent[]
+  dokumenBaca DokumenBaca[]
+  shareLinks  ShareLink[]
+  notifikasi  Notifikasi[]
+  auditLogs   AuditLog[]
+}
+
+// ===== Murid =====
+model Student {
+  id          String   @id @default(cuid())
+  idMurid     String   @unique // cth: AF2026001
+  nama        String
+  tahun       Int // 1..6
+  kelasId     String
+  jantina     String // L | P
+  status      String   @default("AKTIF") // AKTIF | BERTUKAR | TAMAT
+  tarikhLahir DateTime?
+  noKP        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  kelas     Kelas            @relation(fields: [kelasId], references: [id])
+  guardians GuardianStudent[]
+  dokumen   Dokumen[]
+}
+
+// Pautan many-to-many antara Guardian dan Student
+model GuardianStudent {
+  guardianId String
+  studentId  String
+  isPrimary  Boolean @default(false)
+
+  guardian Guardian @relation(fields: [guardianId], references: [id], onDelete: Cascade)
+  student  Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@id([guardianId, studentId])
+}
+
+// ===== Kelas =====
+model Kelas {
+  id          String  @id @default(cuid())
+  nama        String  // cth: "5 Ibnu Sina"
+  tahun       Int
+  guruKelasId String? // FK ke Staff
+
+  guruKelas Staff[]   @relation("KelasGuru")
+  students  Student[]
+  dokumen   Dokumen[]
+
+  @@unique([nama, tahun])
+}
+
+// ===== Dokumen Murid =====
+model Dokumen {
+  id            String   @id @default(cuid())
+  studentId     String
+  kategori      String // LAPORAN_KEMAJUAN | SLIP_KEPUTUSAN | SURAT_PENGESAHAN | SURAT_EDARAN | RESIT_YURAN | REKOD_KEHADIRAN | SIJIL | BORANG
+  tajuk         String
+  penggal       String? // 1 | 2 | 3
+  tahun         Int
+  tarikh        DateTime @default(now())
+  status        String   @default("DRAFT") // DRAFT | SEMAKAN | DILULUSKAN | DITERBITKAN | DITARIK
+  kandungan     String // markdown / HTML content for A4 preview
+  ringkasan     String?
+  diterbitOlehId String?
+  kelasId       String? // untuk dokumen edaran kelas
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  student      Student    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  diterbitOleh Staff?     @relation("DokumenPenerbit", fields: [diterbitOlehId], references: [id])
+  kelas        Kelas?     @relation(fields: [kelasId], references: [id])
+  shareLinks   ShareLink[]
+  dibacaOleh   DokumenBaca[]
+  auditLogs    AuditLog[]
+}
+
+model DokumenBaca {
+  documentId String
+  guardianId String
+  readAt     DateTime @default(now())
+
+  dokumen  Dokumen  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  guardian Guardian @relation(fields: [guardianId], references: [id], onDelete: Cascade)
+
+  @@id([documentId, guardianId])
+}
+
+// ===== Pautan Perkongsian Selamat =====
+model ShareLink {
+  id            String    @id @default(cuid())
+  documentId    String
+  guardianId    String
+  token         String    @unique
+  pinHash       String // simple hash for prototype
+  tarikhLuput   DateTime
+  bilanganAkses Int       @default(0)
+  hadAkses      Int       @default(20)
+  dibatalkan    Boolean   @default(false)
+  cubaanGagal   Int       @default(0)
+  dikunci       Boolean   @default(false)
+  dikunciHingga DateTime?
+  createdAt     DateTime  @default(now())
+
+  dokumen  Dokumen  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  guardian Guardian @relation(fields: [guardianId], references: [id], onDelete: Cascade)
+}
+
+// ===== Notifikasi dalam aplikasi =====
+model Notifikasi {
+  id         String   @id @default(cuid())
+  guardianId String
+  documentId String?
+  jenis      String // DOKUMEN_BAHARU | PERINGATAN | SISTEM
+  mesej      String
+  dibaca     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  guardian Guardian @relation(fields: [guardianId], references: [id], onDelete: Cascade)
+}
+
+// ===== Log Audit =====
+model AuditLog {
+  id         String   @id @default(cuid())
+  staffId    String?
+  guardianId String?
+  userType   String // STAFF | GUARDIAN | UMUM
+  namaUser   String
+  tindakan   String // LOG_MASUK | LOG_KELUAR | LIHAT_DOKUMEN | MUAT_TURUN | CETAK | KONGSI | JANA_PIN | TERBIT | LULUS | TOLAK | CRUD_MURID | CRUD_GUARDIAN
+  documentId String?
+  peranti    String?
+  ip         String?
+  metadata   String?
+  masa       DateTime @default(now())
+
+  staff    Staff?    @relation(fields: [staffId], references: [id])
+  guardian Guardian? @relation(fields: [guardianId], references: [id])
+  dokumen  Dokumen?  @relation(fields: [documentId], references: [id])
+}

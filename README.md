@@ -44,48 +44,81 @@ SPMF ialah aplikasi web yang membenarkan ibu bapa/penjaga mengakses semua dokume
 - **Ikon**: Lucide React
 - **Tema**: next-themes (light/dark)
 
-## Pemasangan Tempatan
+## Pemasangan
 
 ### Keperluan
 
 - Node.js 20+ atau Bun 1.1+
 - npm / bun
 
-### Langkah
+### Pilihan A: Pangkalan Data Supabase (PostgreSQL) — Disyorkan
+
+#### 1. Clone & pasang
 
 ```bash
-# 1. Clone repositori
 git clone https://github.com/hasbulatif/SPMF-V1.git
 cd SPMF-V1
-
-# 2. Pasang dependencies
 bun install
-# atau: npm install
+```
 
-# 3. Jana Prisma Client & push schema ke pangkalan data
+#### 2. Konfigurasi `.env`
+
+Cipta fail `.env` dalam root projek:
+
+```env
+DATABASE_URL=postgresql://postgres:PASSWORD@db.PROJECT_REF.supabase.co:5432/postgres?schema=public
+
+NEXT_PUBLIC_SUPABASE_URL=https://PROJECT_REF.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_ANON_KEY
+```
+
+Gantikan:
+- `PASSWORD` — password database Supabase anda
+- `PROJECT_REF` — rujukan projek Supabase anda (dari Dashboard > Settings)
+- `YOUR_ANON_KEY` — publishable/anon key dari Dashboard > Settings > API
+
+#### 3. Setup pangkalan data
+
+**Cara automatik** (disyorkan):
+
+```bash
+bash download/setup-supabase.sh
+```
+
+Skrip ini akan: jana Prisma Client → push skema (cipta jadual) → isi data sampel.
+
+**Cara manual**:
+
+```bash
 bun run db:generate
 bun run db:push
-
-# 4. (Pilihan) Isi data sampel
 bun run prisma/seed.ts
 bun run prisma/seed-shared-resources.ts
+```
 
-# 5. Jalankan pelayan pembangunan
+**Alternatif: Jalankan SQL terus di Supabase SQL Editor**
+
+Jika anda tidak mempunyai Bun/Node.js, gunakan fail SQL dalam folder `download/`:
+
+1. Buka **Supabase Dashboard → SQL Editor**
+2. Salin & jalankan `download/01-supabase-schema.sql` (cipta jadual)
+3. Salin & jalankan `download/02-supabase-seed.sql` (isi data sampel)
+
+#### 4. Jalankan aplikasi
+
+```bash
 bun run dev
-# atau: npm run dev
 ```
 
 Buka `http://localhost:3000` dalam pelayar.
 
-### Fail `.env`
+### Pilihan B: SQLite Tempatan (untuk pembangunan)
 
-Fail `.env` sudah disertakan dengan konfigurasi SQLite relatif:
+Jika anda mahu guna SQLite tempatan tanpa Supabase:
 
-```
-DATABASE_URL=file:./db/custom.db
-```
-
-Tiada perubahan diperlukan untuk pembangunan tempatan.
+1. Tukar `prisma/schema.prisma`: `provider = "postgresql"` → `provider = "sqlite"`
+2. Tukar `.env`: `DATABASE_URL=file:./db/custom.db`
+3. Jalankan: `bun run db:generate && bun run db:push && bun run prisma/seed.ts`
 
 ## Akaun Demo
 
